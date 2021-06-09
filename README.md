@@ -87,8 +87,12 @@ Sawo provides a clear and concise documentation for integrating their auth syste
     export default Login;
     ```
 - **On Successful integration, this is how the passwordless auth would be implemented and you can redirect to the home page on successful login.**
+      ![Screenshot (245)](https://user-images.githubusercontent.com/60143745/121357753-ad2dee80-c94f-11eb-9692-65407eda0506.png)
+      ![Screenshot (246)](https://user-images.githubusercontent.com/60143745/121357766-aef7b200-c94f-11eb-9f43-22305b4af1e5.png)
 
-- **You can also design the login form as per your website’s needs. Check out the documentation for more — Sawo Docs.**
+
+
+- **You can also design the login form as per your website’s needs. Check out the documentation for more — [Sawo Docs](https://docs.sawolabs.com/sawo/).**
 
 
 
