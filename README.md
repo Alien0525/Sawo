@@ -21,7 +21,78 @@ Sawo provides a clear and concise documentation for integrating their auth syste
     `npm install sawo`
 - **Login to sawo dev console and create a new project. Set project name and project host and copy the api key.**
     
-- 
+- **In Login.jsx, create a container for Sawo’s component**
+    ```
+    <div id="sawo-container" style = {{height: "300 px"}, { width: "300 px"}, {padding: "40px"}}></div>
+    ```
+
+- **In Login.jsx, import React’s useEffect and useState hooks and add the configuration for Sawo’s component. Create a functional component Login and add a useState hook for setting the user’s payload and another useState hook for setting the user as logged in on successful login.**
+
+    ```
+    import { useEffect, useState } from "react";
+    import Sawo from "sawo";
+    import React from "react";
+
+    function Login() {
+    const [userPayload, setuserPayload] = useState({});
+    const [isLoggedIn, setIsLoggesdIn] = useState(false);
+    return;
+    }
+    ```
+
+- **Within the useEffect hook, create the onSuccessLogin method which sets the user’s payload, sets user as logged in, accesses the user id off of the payload object and sets it in session storage. This user id can then be used to create user objects and store in the database.**
+
+- **Create an object sawoConfig that includes the container ID(sawo-container), identifier type(phone number or email), api key and an on success function(onSuccessLogin). Store the api key in secrets.json file and add it to gitignore**
+
+- **Include the sawoConfig object, create an instance of the Sawo class by passing the sawoConfig object as a parameter and invoke the showForm() off of the instance within the useEffect hook.**
+
+- **Return the sawo-container create if the user is logged in which will contain the login form and export this component to use it in your App.**
+
+    ```
+    import { useEffect, useState } from "react";
+    import Sawo from "sawo";
+    import React from "react";
+    import { api } from './Secrets.json';
+
+    function Login() {
+    const [userPayload, setuserPayload] = useState({});
+    const [isLoggedIn, setIsLoggesdIn] = useState(false);
+
+    useEffect(() => {
+        const onSuccessLogin = async (payload) => {
+        setuserPayload(payload);
+        setIsLoggesdIn(true);
+        sessionStorage.setItem("user_id", payload.user_id);
+        };
+
+        const sawoConfig = {
+        containerID: "sawo-container",
+        identifierType: "phone_number_sms",
+        apiKey: api,
+        onSuccess: onSuccessLogin
+        };
+        let sawo = new Sawo(sawoConfig);
+        sawo.showForm();
+    }, []);
+
+    return (
+        <React.Fragment>
+        {!isLoggedIn && (
+            <div id="sawo-container" style = {{height: "300 px"}, { width: "300 px"}, {padding: "40px"}}></div>
+        )}
+        </React.Fragment>
+    );
+    }
+
+    export default Login;
+    ```
+- **On Successful integration, this is how the passwordless auth would be implemented and you can redirect to the home page on successful login.**
+
+- **You can also design the login form as per your website’s needs. Check out the documentation for more — Sawo Docs.**
+
+
+
+
 
 
 

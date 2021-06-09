@@ -34,6 +34,3 @@ function Login() {
 }
 
 export default Login;
-
-// style = {{height: 300 'px}}
-// style="height: 300 px; width: 300px
