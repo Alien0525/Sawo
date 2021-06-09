@@ -16,9 +16,12 @@ Sawo provides a clear and concise documentation for integrating their auth syste
 ## Steps to Integrate SAWO’s passwordless auth system into your React App
 ![Screenshot (244)](https://user-images.githubusercontent.com/60143745/121352667-b7012300-c94a-11eb-87d1-ed2ca29ca362.png)
 
-**Install the sawo package using Node Package Manager**
+- **Install the sawo package using Node Package Manager**
 
-`npm install sawo`
+    `npm install sawo`
+- **Login to sawo dev console and create a new project. Set project name and project host and copy the api key.**
+    
+- 
 
 
 
